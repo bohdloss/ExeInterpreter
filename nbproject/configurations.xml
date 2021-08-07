@@ -5,8 +5,13 @@
                    displayName="Header Files"
                    projectFiles="true">
       <itemPath>Buffer.hpp</itemPath>
-      <itemPath>PE.hpp</itemPath>
-      <itemPath>SectionTableEntry.hpp</itemPath>
+      <itemPath>COFFHeader.hpp</itemPath>
+      <itemPath>COFFSymbol.hpp</itemPath>
+      <itemPath>DataDirectory.hpp</itemPath>
+      <itemPath>Defines.hpp</itemPath>
+      <itemPath>OptionalHeader.hpp</itemPath>
+      <itemPath>PortableExecutable.hpp</itemPath>
+      <itemPath>SectionEntry.hpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -16,9 +21,24 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>Buffer.cpp</itemPath>
+      <itemPath>COFFHeader.cpp</itemPath>
+      <itemPath>COFFSymbol.cpp</itemPath>
+      <itemPath>DataDirectory.cpp</itemPath>
       <itemPath>Main.cpp</itemPath>
-      <itemPath>PE.cpp</itemPath>
-      <itemPath>SectionTableEntry.cpp</itemPath>
+      <itemPath>OptionalHeader.cpp</itemPath>
+      <itemPath>PortableExecutable.cpp</itemPath>
+      <itemPath>SectionEntry.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -44,20 +64,41 @@
         <cTool>
           <commandlineTool>gcc</commandlineTool>
         </cTool>
+        <ccTool>
+          <commandLine>-fpermissive</commandLine>
+        </ccTool>
       </compileType>
       <item path="Buffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Buffer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="COFFHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="COFFHeader.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="COFFSymbol.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="COFFSymbol.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DataDirectory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DataDirectory.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Defines.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Main.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="PE.cpp" ex="false" tool="1" flavor2="0">
+      <item path="OptionalHeader.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="PE.hpp" ex="false" tool="3" flavor2="0">
+      <item path="OptionalHeader.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="SectionTableEntry.cpp" ex="false" tool="1" flavor2="0">
+      <item path="PortableExecutable.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="SectionTableEntry.hpp" ex="false" tool="3" flavor2="0">
+      <item path="PortableExecutable.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SectionEntry.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SectionEntry.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -84,15 +125,33 @@
       </item>
       <item path="Buffer.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="COFFHeader.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="COFFHeader.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="COFFSymbol.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="COFFSymbol.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="DataDirectory.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="DataDirectory.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Defines.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Main.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="PE.cpp" ex="false" tool="1" flavor2="0">
+      <item path="OptionalHeader.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="PE.hpp" ex="false" tool="3" flavor2="0">
+      <item path="OptionalHeader.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="SectionTableEntry.cpp" ex="false" tool="1" flavor2="0">
+      <item path="PortableExecutable.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="SectionTableEntry.hpp" ex="false" tool="3" flavor2="0">
+      <item path="PortableExecutable.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="SectionEntry.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="SectionEntry.hpp" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

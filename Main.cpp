@@ -6,7 +6,8 @@
 #include <malloc.h>
 #include <stdexcept>
 
-#include "PE.hpp"
+#include "PortableExecutable.hpp"
+#include "Buffer.hpp"
 
 #define USAGE "Usage: ExeInterpreter <program_name>\n"
 
@@ -101,7 +102,7 @@ int main(int argc, char** argv) {
     
     // Parse the executable file
     printf(OP_MALLOC);
-    PE* executable = new PE();
+    PortableExecutable* executable = new PortableExecutable();
     if(!executable) {
         printf(OP_MALLOC_FAIL);
         return 1;
@@ -109,7 +110,7 @@ int main(int argc, char** argv) {
     
     printf(OP_PARSE);
     try {
-        executable->parse(file_size, data);
+        executable->parse(Buffer(file_size, data));
     } catch(const std::exception ex) {
         printf(OP_PARSE_FAIL);
         printException(ex);

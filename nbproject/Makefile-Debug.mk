@@ -36,17 +36,21 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/Buffer.o \
+	${OBJECTDIR}/COFFHeader.o \
+	${OBJECTDIR}/COFFSymbol.o \
+	${OBJECTDIR}/DataDirectory.o \
 	${OBJECTDIR}/Main.o \
-	${OBJECTDIR}/PE.o \
-	${OBJECTDIR}/SectionTableEntry.o
+	${OBJECTDIR}/OptionalHeader.o \
+	${OBJECTDIR}/PortableExecutable.o \
+	${OBJECTDIR}/SectionEntry.o
 
 
 # C Compiler Flags
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=
-CXXFLAGS=
+CCFLAGS=-fpermissive
+CXXFLAGS=-fpermissive
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -70,20 +74,40 @@ ${OBJECTDIR}/Buffer.o: Buffer.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Buffer.o Buffer.cpp
 
+${OBJECTDIR}/COFFHeader.o: COFFHeader.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/COFFHeader.o COFFHeader.cpp
+
+${OBJECTDIR}/COFFSymbol.o: COFFSymbol.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/COFFSymbol.o COFFSymbol.cpp
+
+${OBJECTDIR}/DataDirectory.o: DataDirectory.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DataDirectory.o DataDirectory.cpp
+
 ${OBJECTDIR}/Main.o: Main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Main.o Main.cpp
 
-${OBJECTDIR}/PE.o: PE.cpp
+${OBJECTDIR}/OptionalHeader.o: OptionalHeader.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PE.o PE.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OptionalHeader.o OptionalHeader.cpp
 
-${OBJECTDIR}/SectionTableEntry.o: SectionTableEntry.cpp
+${OBJECTDIR}/PortableExecutable.o: PortableExecutable.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SectionTableEntry.o SectionTableEntry.cpp
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PortableExecutable.o PortableExecutable.cpp
+
+${OBJECTDIR}/SectionEntry.o: SectionEntry.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SectionEntry.o SectionEntry.cpp
 
 # Subprojects
 .build-subprojects:

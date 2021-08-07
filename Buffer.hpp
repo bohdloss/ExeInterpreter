@@ -13,7 +13,7 @@ public:
     
     template<typename T>
     T get(size_t offset) {
-        if(offset < 0 || offset + sizeof(T) > size) {
+        if(offset < 0 || offset + sizeof(T) > this->size) {
             throw std::range_error("Out of buffer range");
         }
         T buffer;
@@ -21,9 +21,11 @@ public:
         return buffer;
     }
     
-    template<typename T>
-    T operator[](size_t offset) {
-        return get<T>(offset);
+    void copyOut(size_t offset, size_t destination, size_t size) {
+        if(offset < 0 || offset + size > this->size) {
+            throw std::range_error("Out of buffer range");
+        }
+        memcpy(destination, data + offset, size);
     }
 private:
     size_t size;

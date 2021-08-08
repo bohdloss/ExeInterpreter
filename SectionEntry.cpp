@@ -5,6 +5,7 @@ SectionEntry::SectionEntry() {
 }
 
 SectionEntry::~SectionEntry() {
+    delete[] name;
 }
 
 void SectionEntry::parse(Buffer buffer, size_t offset, uint16_t* index, COFFHeader* coff_header) {

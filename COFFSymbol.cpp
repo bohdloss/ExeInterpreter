@@ -5,6 +5,7 @@ COFFSymbol::COFFSymbol() {
 }
 
 COFFSymbol::~COFFSymbol() {
+    delete[] name;
 }
 
 void COFFSymbol::parse(Buffer buffer, size_t symbol_table_ptr, uint32_t* index, COFFHeader* coff_header) {

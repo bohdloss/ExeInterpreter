@@ -101,16 +101,10 @@ int main(int argc, char** argv) {
     }
     
     // Parse the executable file
-    printf(OP_MALLOC);
-    PortableExecutable* executable = new PortableExecutable();
-    if(!executable) {
-        printf(OP_MALLOC_FAIL);
-        return 1;
-    }
-    
+    PortableExecutable executable;
     printf(OP_PARSE);
     try {
-        executable->parse(Buffer(file_size, data));
+        executable.parse(Buffer(file_size, data));
     } catch(const std::exception ex) {
         printf(OP_PARSE_FAIL);
         printException(ex);
@@ -119,7 +113,7 @@ int main(int argc, char** argv) {
     
     printf(OP_RELOCATE);
     try {
-        executable->relocate(0);
+        executable.relocate(0);
     } catch(const std::exception ex) {
         printf(OP_RELOCATE_FAIL);
         printException(ex);

@@ -7,6 +7,11 @@ PortableExecutable::PortableExecutable() {
 }
 
 PortableExecutable::~PortableExecutable() {
+    delete[] msdos_stub;
+    delete[] signature;
+    delete coff_header;
+    delete optional_header;
+    delete[] section_table;
 }
 
 void PortableExecutable::parse(Buffer buffer) {
@@ -77,6 +82,7 @@ void PortableExecutable::parse(Buffer buffer) {
     // Parse section table
     for(uint16_t i = 0; i < section_length; i++) {
         section_table[i].parse(buffer, section_begin, &i, coff_header);
+        print(section_table[i].getName());
     }
 }
 

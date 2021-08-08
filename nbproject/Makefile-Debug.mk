@@ -50,8 +50,8 @@ OBJECTFILES= \
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-fpermissive -w
-CXXFLAGS=-fpermissive -w
+CCFLAGS=-fpermissive -w -g
+CXXFLAGS=-fpermissive -w -g
 
 # Fortran Compiler Flags
 FFLAGS=

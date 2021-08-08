@@ -67,7 +67,7 @@
           <commandlineTool>gcc</commandlineTool>
         </cTool>
         <ccTool>
-          <commandLine>-fpermissive -w</commandLine>
+          <commandLine>-fpermissive -w -g</commandLine>
         </ccTool>
       </compileType>
       <item path="Buffer.cpp" ex="false" tool="1" flavor2="0">

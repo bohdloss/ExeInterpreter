@@ -13,6 +13,8 @@
         <gdb_interceptlist>
           <gdbinterceptoptions gdb_all="false" gdb_unhandled="true" gdb_unexpected="true"/>
         </gdb_interceptlist>
+        <gdb_signals>
+        </gdb_signals>
         <gdb_options>
           <DebugOptions>
           </DebugOptions>
@@ -27,6 +29,8 @@
           <runcommandpicklistitem>"${OUTPUT_PATH}"</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" /samples/HelloWorld.exe</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" samples/Hello World.exe</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" samples/Win32App.exe</runcommandpicklistitem>
+          <runcommandpicklistitem>"${OUTPUT_PATH}" samples/Aimbot.exe</runcommandpicklistitem>
           <runcommandpicklistitem>"${OUTPUT_PATH}" samples/HelloWorld.exe</runcommandpicklistitem>
         </runcommandpicklist>
         <runcommand>"${OUTPUT_PATH}" samples/HelloWorld.exe</runcommand>

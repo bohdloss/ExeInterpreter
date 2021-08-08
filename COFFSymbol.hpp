@@ -2,6 +2,9 @@
 
 #include <stdint.h>
 #include "Buffer.hpp"
+#include "COFFHeader.hpp"
+
+class COFFHeader;
 
 class COFFSymbol {
 public:
@@ -25,17 +28,17 @@ public:
     COFFSymbol();
     virtual ~COFFSymbol();
     
-    void parse(Buffer buffer, size_t symbol_table_ptr, uint32_t* index);
+    void parse(Buffer buffer, size_t symbol_table_ptr, uint32_t* index, COFFHeader* coff_header);
 
     uint8_t getAuxiliary_number() const {
         return auxiliary_number;
     }
 
-    uint8_t getCclass() const {
+    uint8_t getClass() const {
         return cclass;
     }
 
-    int16_t getSection_number() const {
+    int16_t getSectionNumber() const {
         return section_number;
     }
 
@@ -48,13 +51,7 @@ public:
     }
 
 private:
-    union {
-        char name[8];
-        struct {
-            uint32_t zero;
-            uint32_t offset;
-        };
-    };
+    char* name;
     uint32_t value;
     int16_t section_number;
     uint16_t type;

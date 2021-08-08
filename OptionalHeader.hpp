@@ -122,19 +122,19 @@ public:
         return architecture;
     }
 
-    uint32_t getBase_of_code_ptr() const {
+    uint32_t getBaseOfCodePtr() const {
         return base_of_code_ptr;
     }
 
-    DataDirectory getBase_relocation_table() const {
+    DataDirectory getBaseRelocationTable() const {
         return base_relocation_table;
     }
 
-    DataDirectory getBound_import_table() const {
+    DataDirectory getBoundImportTable() const {
         return bound_import_table;
     }
 
-    DataDirectory getCertificate_table() const {
+    DataDirectory getCertificateTable() const {
         return certificate_table;
     }
 
@@ -142,11 +142,11 @@ public:
         return checksum;
     }
 
-    DataDirectory getClr_runtime_header() const {
+    DataDirectory getClrRuntimeHeader() const {
         return clr_runtime_header;
     }
 
-    uint32_t getCode_size() const {
+    uint32_t getCodeSize() const {
         return code_size;
     }
 
@@ -154,63 +154,63 @@ public:
         return debug;
     }
 
-    DataDirectory getDelay_import_descriptor() const {
+    DataDirectory getDelayImportDescriptor() const {
         return delay_import_descriptor;
     }
 
-    uint16_t getDll_characteristics() const {
+    uint16_t getDllCharacteristics() const {
         return dll_characteristics;
     }
 
-    uint32_t getEntry_point_ptr() const {
+    uint32_t getEntryPointPtr() const {
         return entry_point_ptr;
     }
 
-    DataDirectory getException_table() const {
+    DataDirectory getExceptionTable() const {
         return exception_table;
     }
 
-    DataDirectory getExport_table() const {
+    DataDirectory getExportTable() const {
         return export_table;
     }
 
-    uint32_t getFile_alignment() const {
+    uint32_t getFileAlignment() const {
         return file_alignment;
     }
 
-    DataDirectory getGlobal_ptr() const {
+    DataDirectory getGlobalPtr() const {
         return global_ptr;
     }
 
-    uint64_t getHeap_commit_size() const {
+    uint64_t getHeapCommitSize() const {
         return heap_commit_size;
     }
 
-    uint64_t getHeap_reserve_size() const {
+    uint64_t getHeapReserveSize() const {
         return heap_reserve_size;
     }
 
-    uint64_t getImage_base() const {
+    uint64_t getImageBase() const {
         return image_base;
     }
 
-    DataDirectory getImport_address_table() const {
+    DataDirectory getImportAddressTable() const {
         return import_address_table;
     }
 
-    DataDirectory getImport_table() const {
+    DataDirectory getImportTable() const {
         return import_table;
     }
 
-    uint32_t getInitialized_data_size() const {
+    uint32_t getInitializedDataSize() const {
         return initialized_data_size;
     }
 
-    DataDirectory getLoad_config_table() const {
+    DataDirectory getLoadConfigTable() const {
         return load_config_table;
     }
 
-    uint32_t getLoader_flags() const {
+    uint32_t getLoaderFlags() const {
         return loader_flags;
     }
 
@@ -218,63 +218,63 @@ public:
         return magic;
     }
 
-    uint16_t getMajor_image_version() const {
+    uint16_t getMajorImageVersion() const {
         return major_image_version;
     }
 
-    uint8_t getMajor_linker_version() const {
+    uint8_t getMajorLinkerVersion() const {
         return major_linker_version;
     }
 
-    uint16_t getMajor_os_version() const {
+    uint16_t getMajorOsVersion() const {
         return major_os_version;
     }
 
-    uint16_t getMajor_subsystem_version() const {
+    uint16_t getMajorSubsystemVersion() const {
         return major_subsystem_version;
     }
 
-    uint16_t getMinor_image_version() const {
+    uint16_t getMinorImageVersion() const {
         return minor_image_version;
     }
 
-    uint8_t getMinor_linker_version() const {
+    uint8_t getMinorLinkerVersion() const {
         return minor_linker_version;
     }
 
-    uint16_t getMinor_os_version() const {
+    uint16_t getMinorOsVersion() const {
         return minor_os_version;
     }
 
-    uint16_t getMinor_subsystem_version() const {
+    uint16_t getMinorSubsystemVersion() const {
         return minor_subsystem_version;
     }
 
-    uint32_t getNumber_of_directory_entries() const {
+    uint32_t getNumberOfDirectoryEntries() const {
         return number_of_directory_entries;
     }
 
-    DataDirectory getResource_table() const {
+    DataDirectory getResourceTable() const {
         return resource_table;
     }
 
-    uint32_t getSection_alignment() const {
+    uint32_t getSectionAlignment() const {
         return section_alignment;
     }
 
-    uint32_t getSize_of_headers() const {
+    uint32_t getSizeOfHeaders() const {
         return size_of_headers;
     }
 
-    uint32_t getSize_of_image() const {
+    uint32_t getSizeOfImage() const {
         return size_of_image;
     }
 
-    uint64_t getStack_commit_size() const {
+    uint64_t getStackCommitSize() const {
         return stack_commit_size;
     }
 
-    uint64_t getStack_reserve_size() const {
+    uint64_t getStackReserveSize() const {
         return stack_reserve_size;
     }
 
@@ -282,11 +282,11 @@ public:
         return subsystem;
     }
 
-    DataDirectory getTls_table() const {
+    DataDirectory getTlsTable() const {
         return tls_table;
     }
 
-    uint32_t getUninitialized_data_size() const {
+    uint32_t getUninitializedDataSize() const {
         return uninitialized_data_size;
     }
 
@@ -294,7 +294,7 @@ public:
         return unused;
     }
 
-    uint32_t getWin32_version_value() const {
+    uint32_t getWin32VersionValue() const {
         return win32_version_value;
     }
 

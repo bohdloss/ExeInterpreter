@@ -42,15 +42,16 @@ OBJECTFILES= \
 	${OBJECTDIR}/Main.o \
 	${OBJECTDIR}/OptionalHeader.o \
 	${OBJECTDIR}/PortableExecutable.o \
-	${OBJECTDIR}/SectionEntry.o
+	${OBJECTDIR}/SectionEntry.o \
+	${OBJECTDIR}/Utils.o
 
 
 # C Compiler Flags
 CFLAGS=
 
 # CC Compiler Flags
-CCFLAGS=-fpermissive
-CXXFLAGS=-fpermissive
+CCFLAGS=-fpermissive -w
+CXXFLAGS=-fpermissive -w
 
 # Fortran Compiler Flags
 FFLAGS=
@@ -108,6 +109,11 @@ ${OBJECTDIR}/SectionEntry.o: SectionEntry.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SectionEntry.o SectionEntry.cpp
+
+${OBJECTDIR}/Utils.o: Utils.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Utils.o Utils.cpp
 
 # Subprojects
 .build-subprojects:

@@ -42,7 +42,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/Main.o \
 	${OBJECTDIR}/OptionalHeader.o \
 	${OBJECTDIR}/PortableExecutable.o \
-	${OBJECTDIR}/SectionEntry.o
+	${OBJECTDIR}/SectionEntry.o \
+	${OBJECTDIR}/Utils.o
 
 
 # C Compiler Flags
@@ -108,6 +109,11 @@ ${OBJECTDIR}/SectionEntry.o: SectionEntry.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/SectionEntry.o SectionEntry.cpp
+
+${OBJECTDIR}/Utils.o: Utils.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Utils.o Utils.cpp
 
 # Subprojects
 .build-subprojects:

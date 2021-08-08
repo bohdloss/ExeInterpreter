@@ -17,11 +17,11 @@ private:
     uint32_t virtual_address;
     uint32_t size;
 
-    uint32_t GetSize() const {
+    uint32_t getSize() const {
         return size;
     }
 
-    uint32_t GetVirtual_address() const {
+    uint32_t getVirtualAddress() const {
         return virtual_address;
     }
 

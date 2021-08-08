@@ -60,9 +60,23 @@ void PortableExecutable::parse(Buffer buffer) {
     size_t optional_size = optional_header->sizeOf();
     
     // Validate size with previous data
-    if(optional_size != coff_header->getOptional_header_size()) {
+    if(optional_size != coff_header->getOptionalHeaderSize()) {
         printf(NO_OPTSIZE);
         throw std::logic_error(NO_OPTSIZE);
+    }
+    
+    // Initialize section table
+    size_t section_begin = optional_begin + optional_size;
+    size_t section_length = coff_header->getNumberOfSections();
+    section_table = new SectionEntry[section_length];
+    if(!section_table) {
+        printf(NO_MALLOC);
+        throw std::logic_error(NO_MALLOC);
+    }
+    
+    // Parse section table
+    for(uint16_t i = 0; i < section_length; i++) {
+        section_table[i].parse(buffer, section_begin, &i, coff_header);
     }
 }
 

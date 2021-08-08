@@ -5,8 +5,8 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdexcept>
-
-#define NO_RANGE "Out of buffer range"
+#include "Defines.hpp"
+#include "Utils.hpp"
 
 class Buffer {
 public:
@@ -16,6 +16,7 @@ public:
     template<typename T>
     T get(size_t offset) {
         if(offset < 0 || offset + sizeof(T) > this->size) {
+            printf(NO_RANGE);
             throw std::range_error(NO_RANGE);
         }
         T buffer;
@@ -26,6 +27,7 @@ public:
     template<typename T>
     void set(size_t offset, T value) {
         if(offset < 0 || offset + sizeof(T) > this->size) {
+            printf(NO_RANGE);
             throw std::range_error(NO_RANGE);
         }
         memcpy(data + offset, &value, sizeof(T));
@@ -33,6 +35,7 @@ public:
     
     void copyOut(size_t offset, size_t destination, size_t size) {
         if(offset < 0 || offset + size > this->size) {
+            printf(NO_RANGE);
             throw std::range_error(NO_RANGE);
         }
         memcpy(destination, data + offset, size);
@@ -40,6 +43,7 @@ public:
     
     void copyIn(size_t offset, size_t source, size_t size) {
         if(offset < 0 || offset + size > this->size) {
+            printf(NO_RANGE);
             throw std::range_error(NO_RANGE);
         }
         memcpy(data + offset, source, size);

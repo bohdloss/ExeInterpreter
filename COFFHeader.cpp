@@ -15,18 +15,8 @@ void COFFHeader::parse(Buffer buffer, size_t header_offset) {
     this->time_stamp = coff_struct.time_stamp;
     this->optional_header_size = coff_struct.optional_header_size;
     this->characteristics = coff_struct.characteristics;
-    this->symbol_amount = 0;
+    this->symbol_amount = coff_struct.symbol_amount;
     this->symbol_table_ptr = 0;
-    
-    if(coff_struct.symbol_amount != 0 && coff_struct.symbol_table_ptr != 0) {
-        // Debugging information is present, copy it
-        this->symbol_amount = coff_struct.symbol_amount;
-        this->symbol_table_ptr = new COFFSymbol[symbol_amount];
-        
-        for(uint32_t i = 0; i < symbol_amount; i++) {
-            symbol_table_ptr[i].parse(buffer, coff_struct.symbol_table_ptr, &i);
-        }
-    }
     
     // Initialize the string table
     uint32_t string_table_offset = coff_struct.symbol_table_ptr + (symbol_amount * sizeof(COFFSymbol::nSymbol));
@@ -64,5 +54,18 @@ void COFFHeader::parse(Buffer buffer, size_t header_offset) {
         
         memcpy(string_table_ptr[i], str, str_len);
         i++;
+    }
+    
+    // Copy raw string table too
+    this->raw_string_table_ptr = malloc(string_table_size);
+    memcpy(raw_string_table_ptr, buffer.getData() + string_table_offset, string_table_size);
+    
+    if(coff_struct.symbol_amount != 0 && coff_struct.symbol_table_ptr != 0) {
+        // Debugging information is present, copy it
+        this->symbol_table_ptr = new COFFSymbol[symbol_amount];
+        
+        for(uint32_t i = 0; i < symbol_amount; i++) {
+            symbol_table_ptr[i].parse(buffer, coff_struct.symbol_table_ptr, &i, this);
+        }
     }
 }

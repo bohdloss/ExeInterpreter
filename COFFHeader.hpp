@@ -3,6 +3,8 @@
 #include "COFFSymbol.hpp"
 #include "Buffer.hpp"
 
+class COFFSymbol;
+
 class COFFHeader {
 public:
 #pragma pack(push, 1)
@@ -30,32 +32,40 @@ public:
         return machine;
     }
 
-    uint16_t getNumber_of_sections() const {
+    uint16_t getNumberOfSections() const {
         return number_of_sections;
     }
 
-    uint16_t getOptional_header_size() const {
+    uint16_t getOptionalHeaderSize() const {
         return optional_header_size;
     }
 
-    uint32_t getSymbol_amount() const {
+    uint32_t getSymbolAmount() const {
         return symbol_amount;
     }
 
-    COFFSymbol* getSymbol_table_ptr() const {
+    COFFSymbol* getSymbolTablePtr() const {
         return symbol_table_ptr;
     }
 
-    uint32_t getTime_stamp() const {
+    uint32_t getTimestamp() const {
         return time_stamp;
     }
     
-    char** getString_table_ptr() const {
+    char** getStringTablePtr() const {
         return string_table_ptr;
     }
 
-    uint32_t getString_amount() const {
+    uint32_t getStringAmount() const {
         return string_amount;
+    }
+    
+    void* getRawStringTablePtr() const {
+        return raw_string_table_ptr;
+    }
+    
+    char* getString(size_t offset) {
+        return (char*) (raw_string_table_ptr + offset);
     }
     
 private: 
@@ -68,4 +78,5 @@ private:
     uint16_t characteristics;
     char** string_table_ptr;
     uint32_t string_amount;
+    void* raw_string_table_ptr;
 };

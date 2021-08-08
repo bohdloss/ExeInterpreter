@@ -15,6 +15,26 @@ public:
     
     void parse(Buffer buffer);
     void relocate(void* address);
+
+    COFFHeader* getCoffHeader() const {
+        return coff_header;
+    }
+
+    unsigned char* getMsdosStub() const {
+        return msdos_stub;
+    }
+
+    OptionalHeader* getOptionalHeader() const {
+        return optional_header;
+    }
+
+    SectionEntry* getSectionTable() const {
+        return section_table;
+    }
+
+    char* getSignature() const {
+        return signature;
+    }
     
 private:
     unsigned char* msdos_stub;

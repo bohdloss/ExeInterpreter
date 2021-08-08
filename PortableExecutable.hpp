@@ -6,10 +6,7 @@
 #include "OptionalHeader.hpp"
 #include "SectionEntry.hpp"
 #include "Buffer.hpp"
-
-#define NO_MALLOC "Memory allocation failed\n"
-#define NO_SIGNATURE "Executable file does not contain a valid signature\n"
-#define NO_MAGIC "Executable file does not contain a valid magic number in its optional header\n"
+#include "Defines.hpp"
 
 class PortableExecutable {
 public:
@@ -18,12 +15,6 @@ public:
     
     void parse(Buffer buffer);
     void relocate(void* address);
-    
-    unsigned char* getMsdosStub();
-    char* getSignature();
-    COFFHeader* getCoffHeader();
-    OptionalHeader* getOptionalHeader();
-    SectionEntry* getSectionTable();
     
 private:
     unsigned char* msdos_stub;

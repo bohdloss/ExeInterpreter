@@ -8,3 +8,10 @@ Buffer::Buffer(size_t size, void* data) {
 Buffer::~Buffer() {
 }
 
+size_t Buffer::getSize() {
+    return size;
+}
+
+void* Buffer::getData() {
+    return data;
+}

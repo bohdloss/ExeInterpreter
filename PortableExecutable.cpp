@@ -15,7 +15,6 @@ void PortableExecutable::parse(Buffer buffer) {
     size_t signature_size = 4;
     size_t msdos_begin = 0;
     size_t msdos_size = signature_begin - msdos_begin;
-    size_t coff_begin = signature_begin + signature_size;
     
     // Initialize stub
     msdos_stub = new unsigned char[msdos_size];
@@ -41,34 +40,32 @@ void PortableExecutable::parse(Buffer buffer) {
     }
     
     // Initialize coff header
+    size_t coff_begin = signature_begin + signature_size;
+    size_t coff_size = sizeof(COFFHeader::nCOFF);
     coff_header = new COFFHeader();
     if(!coff_header) {
         printf(NO_MALLOC);
         throw std::logic_error(NO_MALLOC);
     }
     coff_header->parse(buffer, coff_begin);
+    
+    // Initialize optional header
+    size_t optional_begin = coff_begin + coff_size;
+    optional_header = new OptionalHeader();
+    if(!optional_header) {
+        printf(NO_MALLOC);
+        throw std::logic_error(NO_MALLOC);
+    }
+    optional_header->parse(buffer, optional_begin);
+    size_t optional_size = optional_header->sizeOf();
+    
+    // Validate size with previous data
+    if(optional_size != coff_header->getOptional_header_size()) {
+        printf(NO_OPTSIZE);
+        throw std::logic_error(NO_OPTSIZE);
+    }
 }
 
 void PortableExecutable::relocate(void* address) {
     
-}
-
-unsigned char* PortableExecutable::getMsdosStub() {
-    return msdos_stub;
-}
-
-char* PortableExecutable::getSignature() {
-    return signature;
-}
-
-COFFHeader* PortableExecutable::getCoffHeader() {
-    return coff_header;
-}
-
-OptionalHeader* PortableExecutable::getOptionalHeader() {
-    return optional_header;
-}
-
-SectionEntry* PortableExecutable::getSectionTable() {
-    return section_table;
 }

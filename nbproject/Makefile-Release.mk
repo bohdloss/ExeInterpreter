@@ -35,13 +35,16 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/AllocationException.o \
 	${OBJECTDIR}/Buffer.o \
 	${OBJECTDIR}/COFFHeader.o \
 	${OBJECTDIR}/COFFSymbol.o \
 	${OBJECTDIR}/DataDirectory.o \
+	${OBJECTDIR}/EIException.o \
+	${OBJECTDIR}/Executable.o \
 	${OBJECTDIR}/Main.o \
 	${OBJECTDIR}/OptionalHeader.o \
-	${OBJECTDIR}/PortableExecutable.o \
+	${OBJECTDIR}/ParseException.o \
 	${OBJECTDIR}/SectionEntry.o \
 	${OBJECTDIR}/Utils.o
 
@@ -70,6 +73,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/exeinterpreter: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/exeinterpreter ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/AllocationException.o: AllocationException.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/AllocationException.o AllocationException.cpp
+
 ${OBJECTDIR}/Buffer.o: Buffer.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -90,6 +98,16 @@ ${OBJECTDIR}/DataDirectory.o: DataDirectory.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/DataDirectory.o DataDirectory.cpp
 
+${OBJECTDIR}/EIException.o: EIException.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/EIException.o EIException.cpp
+
+${OBJECTDIR}/Executable.o: Executable.cpp
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/Executable.o Executable.cpp
+
 ${OBJECTDIR}/Main.o: Main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -100,10 +118,10 @@ ${OBJECTDIR}/OptionalHeader.o: OptionalHeader.cpp
 	${RM} "$@.d"
 	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/OptionalHeader.o OptionalHeader.cpp
 
-${OBJECTDIR}/PortableExecutable.o: PortableExecutable.cpp
+${OBJECTDIR}/ParseException.o: ParseException.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/PortableExecutable.o PortableExecutable.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/ParseException.o ParseException.cpp
 
 ${OBJECTDIR}/SectionEntry.o: SectionEntry.cpp
 	${MKDIR} -p ${OBJECTDIR}

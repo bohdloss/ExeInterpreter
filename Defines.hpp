@@ -1,10 +1,10 @@
 #pragma once
 
-#define NO_MALLOC "Memory allocation failed\n"
-#define NO_SIGNATURE "Executable file does not contain a valid signature\n"
-#define NO_MAGIC "Executable file does not contain a valid magic number in its optional header\n"
-#define NO_OPTSIZE "Optional header size differs from the one specified by the COFF header\n"
-#define NO_RANGE "Out of buffer range\n"
+#define NO_MALLOC "Memory allocation failed"
+#define NO_SIGNATURE "Executable file does not contain a valid signature"
+#define NO_MAGIC "Executable file does not contain a valid magic number in its optional header"
+#define NO_OPTSIZE "Optional header size differs from the one specified by the COFF header"
+#define NO_RANGE "Out of buffer range"
 
 #define IMAGE_PE32 0x10b
 #define IMAGE_PE32PLUS 0x20b

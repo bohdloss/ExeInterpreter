@@ -1,5 +1,6 @@
 #include "OptionalHeader.hpp"
 #include "Defines.hpp"
+#include "ParseException.hpp"
 
 OptionalHeader::OptionalHeader() {
 }
@@ -52,8 +53,7 @@ void OptionalHeader::parse(Buffer buffer, size_t header_offset) {
         }
         default:
         {
-            printf(NO_MAGIC);
-            throw std::logic_error(NO_MAGIC);
+            throw new ParseException(NO_MAGIC);
         }
     }
     

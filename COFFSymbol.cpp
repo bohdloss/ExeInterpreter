@@ -1,4 +1,5 @@
 #include "COFFSymbol.hpp"
+#include "AllocationException.hpp"
 #include <string>
 
 COFFSymbol::COFFSymbol() {
@@ -19,6 +20,9 @@ void COFFSymbol::parse(Buffer buffer, size_t symbol_table_ptr, uint32_t* index, 
         
         // Copy it
         this->name = new char[string_len];
+        if(!name) {
+            throw new AllocationException();
+        }
         memcpy(name, string, string_len);
     } else {
         // Is the string null terminated?
@@ -27,9 +31,15 @@ void COFFSymbol::parse(Buffer buffer, size_t symbol_table_ptr, uint32_t* index, 
         if(null_term) {
             size_t string_len = strlen(string) + 1;
             this->name = new char[string_len];
+            if(!name) {
+                throw new AllocationException();
+            }
             memcpy(name, string, string_len);
         } else {
             this->name = new char[9];
+            if(!name) {
+                throw new AllocationException();
+            }
             memcpy(name, string, 8);
             name[8] = '\0';
         }

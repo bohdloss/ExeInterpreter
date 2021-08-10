@@ -8,10 +8,10 @@
 #include "Buffer.hpp"
 #include "Defines.hpp"
 
-class PortableExecutable {
+class Executable {
 public:
-    PortableExecutable();
-    virtual ~PortableExecutable();
+    Executable();
+    virtual ~Executable();
     
     void parse(Buffer buffer);
     void relocate(void* address);

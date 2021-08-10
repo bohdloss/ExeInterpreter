@@ -4,13 +4,16 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>AllocationException.hpp</itemPath>
       <itemPath>Buffer.hpp</itemPath>
       <itemPath>COFFHeader.hpp</itemPath>
       <itemPath>COFFSymbol.hpp</itemPath>
       <itemPath>DataDirectory.hpp</itemPath>
       <itemPath>Defines.hpp</itemPath>
+      <itemPath>EIException.hpp</itemPath>
+      <itemPath>Executable.hpp</itemPath>
       <itemPath>OptionalHeader.hpp</itemPath>
-      <itemPath>PortableExecutable.hpp</itemPath>
+      <itemPath>ParseException.hpp</itemPath>
       <itemPath>SectionEntry.hpp</itemPath>
       <itemPath>Utils.hpp</itemPath>
     </logicalFolder>
@@ -21,13 +24,16 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>AllocationException.cpp</itemPath>
       <itemPath>Buffer.cpp</itemPath>
       <itemPath>COFFHeader.cpp</itemPath>
       <itemPath>COFFSymbol.cpp</itemPath>
       <itemPath>DataDirectory.cpp</itemPath>
+      <itemPath>EIException.cpp</itemPath>
+      <itemPath>Executable.cpp</itemPath>
       <itemPath>Main.cpp</itemPath>
       <itemPath>OptionalHeader.cpp</itemPath>
-      <itemPath>PortableExecutable.cpp</itemPath>
+      <itemPath>ParseException.cpp</itemPath>
       <itemPath>SectionEntry.cpp</itemPath>
       <itemPath>Utils.cpp</itemPath>
     </logicalFolder>
@@ -70,6 +76,10 @@
           <commandLine>-fpermissive -w -g</commandLine>
         </ccTool>
       </compileType>
+      <item path="AllocationException.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AllocationException.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Buffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Buffer.hpp" ex="false" tool="3" flavor2="0">
@@ -88,15 +98,23 @@
       </item>
       <item path="Defines.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="EIException.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EIException.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Executable.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Executable.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="OptionalHeader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="OptionalHeader.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="PortableExecutable.cpp" ex="false" tool="1" flavor2="0">
+      <item path="ParseException.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="PortableExecutable.hpp" ex="false" tool="3" flavor2="0">
+      <item path="ParseException.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="SectionEntry.cpp" ex="false" tool="1" flavor2="0">
       </item>
@@ -127,6 +145,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="AllocationException.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="AllocationException.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Buffer.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="Buffer.hpp" ex="false" tool="3" flavor2="0">
@@ -145,15 +167,23 @@
       </item>
       <item path="Defines.hpp" ex="false" tool="3" flavor2="0">
       </item>
+      <item path="EIException.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="EIException.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Executable.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="Executable.hpp" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="Main.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="OptionalHeader.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="OptionalHeader.hpp" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="PortableExecutable.cpp" ex="false" tool="1" flavor2="0">
+      <item path="ParseException.cpp" ex="false" tool="1" flavor2="0">
       </item>
-      <item path="PortableExecutable.hpp" ex="false" tool="3" flavor2="0">
+      <item path="ParseException.hpp" ex="false" tool="3" flavor2="0">
       </item>
       <item path="SectionEntry.cpp" ex="false" tool="1" flavor2="0">
       </item>

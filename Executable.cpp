@@ -1,12 +1,14 @@
-#include "PortableExecutable.hpp"
+#include "Executable.hpp"
 #include "Buffer.hpp"
+#include "AllocationException.hpp"
+#include "ParseException.hpp"
 
 #include <string>
 
-PortableExecutable::PortableExecutable() {
+Executable::Executable() {
 }
 
-PortableExecutable::~PortableExecutable() {
+Executable::~Executable() {
     delete[] msdos_stub;
     delete[] signature;
     delete coff_header;
@@ -14,7 +16,7 @@ PortableExecutable::~PortableExecutable() {
     delete[] section_table;
 }
 
-void PortableExecutable::parse(Buffer buffer) {
+void Executable::parse(Buffer buffer) {
     // Find some offsets and sizes
     size_t signature_begin = buffer.get<uint32_t>(0x3c);
     size_t signature_size = 4;
@@ -24,8 +26,7 @@ void PortableExecutable::parse(Buffer buffer) {
     // Initialize stub
     msdos_stub = new unsigned char[msdos_size];
     if(!msdos_stub) {
-        printf(NO_MALLOC);
-        throw std::logic_error(NO_MALLOC);
+        throw new AllocationException();
     }
     buffer.copyOut(msdos_begin, msdos_stub, msdos_size);
     
@@ -33,15 +34,13 @@ void PortableExecutable::parse(Buffer buffer) {
     signature = new char[4];
     char correct_signature[4] = "PE\0\0";
     if(!signature) {
-        printf(NO_MALLOC);
-        throw std::logic_error(NO_MALLOC);
+        throw new AllocationException();
     }
     buffer.copyOut(signature_begin, signature, signature_size);
     
     // Validate signature
     if(strncmp(signature, correct_signature, 4) != 0) {
-        printf(NO_SIGNATURE);
-        throw std::logic_error(NO_SIGNATURE);
+        throw new ParseException(NO_SIGNATURE);
     }
     
     // Initialize coff header
@@ -49,8 +48,7 @@ void PortableExecutable::parse(Buffer buffer) {
     size_t coff_size = sizeof(COFFHeader::nCOFF);
     coff_header = new COFFHeader();
     if(!coff_header) {
-        printf(NO_MALLOC);
-        throw std::logic_error(NO_MALLOC);
+        throw new AllocationException();
     }
     coff_header->parse(buffer, coff_begin);
     
@@ -58,16 +56,14 @@ void PortableExecutable::parse(Buffer buffer) {
     size_t optional_begin = coff_begin + coff_size;
     optional_header = new OptionalHeader();
     if(!optional_header) {
-        printf(NO_MALLOC);
-        throw std::logic_error(NO_MALLOC);
+        throw new AllocationException();
     }
     optional_header->parse(buffer, optional_begin);
     size_t optional_size = optional_header->sizeOf();
     
     // Validate size with previous data
     if(optional_size != coff_header->getOptionalHeaderSize()) {
-        printf(NO_OPTSIZE);
-        throw std::logic_error(NO_OPTSIZE);
+        throw new ParseException(NO_OPTSIZE);
     }
     
     // Initialize section table
@@ -75,8 +71,7 @@ void PortableExecutable::parse(Buffer buffer) {
     size_t section_length = coff_header->getNumberOfSections();
     section_table = new SectionEntry[section_length];
     if(!section_table) {
-        printf(NO_MALLOC);
-        throw std::logic_error(NO_MALLOC);
+        throw new AllocationException();
     }
     
     // Parse section table
@@ -86,6 +81,6 @@ void PortableExecutable::parse(Buffer buffer) {
     }
 }
 
-void PortableExecutable::relocate(void* address) {
+void Executable::relocate(void* address) {
     
 }

@@ -1,5 +1,6 @@
 #include "SectionEntry.hpp"
 #include "Utils.hpp"
+#include "AllocationException.hpp"
 
 SectionEntry::SectionEntry() {
 }
@@ -22,6 +23,9 @@ void SectionEntry::parse(Buffer buffer, size_t offset, uint16_t* index, COFFHead
         
         // Copy it
         this->name = new char[string_len];
+        if(!name) {
+            throw new AllocationException();
+        }
         memcpy(name, string, string_len);
     } else {
         // Is the string null terminated?
@@ -30,9 +34,15 @@ void SectionEntry::parse(Buffer buffer, size_t offset, uint16_t* index, COFFHead
         if(null_term) {
             size_t string_len = strlen(string) + 1;
             this->name = new char[string_len];
+            if(!name) {
+                throw new AllocationException();
+            }
             memcpy(name, string, string_len);
         } else {
             this->name = new char[9];
+            if(!name) {
+                throw new AllocationException();
+            }
             memcpy(name, string, 8);
             name[8] = '\0';
         }

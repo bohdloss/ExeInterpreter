@@ -1,5 +1,6 @@
 #include "COFFHeader.hpp"
 #include "Defines.hpp"
+#include "AllocationException.hpp"
 
 COFFHeader::COFFHeader() {
 }
@@ -40,8 +41,7 @@ void COFFHeader::parse(Buffer buffer, size_t header_offset) {
             this->string_amount = string_count;
             this->string_table_ptr = new char*[string_amount];
             if(!string_table_ptr) {
-                printf(NO_MALLOC);
-                throw std::logic_error(NO_MALLOC);
+                throw new AllocationException();
             }
 
             // Copy string table
@@ -53,8 +53,7 @@ void COFFHeader::parse(Buffer buffer, size_t header_offset) {
 
                 string_table_ptr[i] = new char[str_len];
                 if(!string_table_ptr[i]) {
-                    printf(NO_MALLOC);
-                    throw std::logic_error(NO_MALLOC);
+                    throw new AllocationException();
                 }
 
                 memcpy(string_table_ptr[i], str, str_len);
@@ -72,6 +71,9 @@ void COFFHeader::parse(Buffer buffer, size_t header_offset) {
         
         // Debugging information is present, copy it
         this->symbol_table_ptr = new COFFSymbol[symbol_amount];
+        if(!symbol_table_ptr) {
+            throw new AllocationException();
+        }
         
         for(uint32_t i = 0; i < symbol_amount; i++) {
             symbol_table_ptr[i].parse(buffer, coff_struct.symbol_table_ptr, &i, this);
